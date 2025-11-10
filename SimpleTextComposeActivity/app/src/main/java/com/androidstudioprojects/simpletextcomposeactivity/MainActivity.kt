@@ -40,8 +40,8 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview() {
-    SimpleTextComposeActivityTheme {
+fun GreetingPreview() { // tells the compiler that this is a preview function used to simulate as it would be in the main activity
+    SimpleTextComposeActivityTheme { // make sure the code is same as the main activity so that it can be previewed exactly the same as the main activity
         Greeting("Android")
     }
 }
