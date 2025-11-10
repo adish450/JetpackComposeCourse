@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -47,6 +48,16 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
         modifier = modifier.fillMaxSize(.5f)
         modifier = modifier.fillMaxWidth(.5f)
         modifier = modifier.fillMaxHeight(.5f)*/
+        /*, Modifier
+            .width(200.dp)
+            .height(240.dp)
+            .padding(horizontal = 10.dp, vertical = 10.dp)
+            .clickable {}*/,
+        Modifier
+            .clickable {}
+            .padding(horizontal = 10.dp, vertical = 10.dp)
+            .width(200.dp)
+            .height(240.dp)
     )
 }
 
