@@ -4,9 +4,12 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
 import androidx.compose.material3.Scaffold
@@ -24,7 +27,10 @@ class MainActivity : ComponentActivity() {
         setContent {
             SimpleTextComposeActivityTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    GreetingButton("Android")
+                    Greeting(
+                        name = "Android",
+                        modifier = Modifier.padding(innerPadding)
+                    )
                 }
             }
         }
@@ -34,8 +40,13 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
     Text(
-        text = "Hello $name!",
-        modifier = modifier
+        text = "Hello $name!"/*,
+        modifier = modifier.width(100.dp).height(40.dp)
+        modifier = modifier.size(width = 100.dp, height = 80.dp)
+        modifier = modifier.size(size = 100.dp)
+        modifier = modifier.fillMaxSize(.5f)
+        modifier = modifier.fillMaxWidth(.5f)
+        modifier = modifier.fillMaxHeight(.5f)*/
     )
 }
 
