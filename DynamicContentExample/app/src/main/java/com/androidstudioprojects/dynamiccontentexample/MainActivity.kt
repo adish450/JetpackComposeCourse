@@ -13,6 +13,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -43,10 +44,11 @@ fun GreetingList(names : List<String>) {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceEvenly
     ) {
-        for (name in names) {
+        val list = remember {  mutableStateListOf("Adish", "Alfi")}
+        for (name in list) {
             Greeting(name)
         }
-        Button({namesList.add("Daddy")}) {
+        Button({list.add("Daddy")}) {
             Text(text = "Add new name")
         }
     }
