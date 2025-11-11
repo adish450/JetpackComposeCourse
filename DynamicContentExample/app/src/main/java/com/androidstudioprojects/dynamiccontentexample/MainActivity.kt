@@ -29,7 +29,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             DynamicContentExampleTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    GreetingList(namesList)
+                    MainScreen()
                 }
             }
         }
@@ -37,20 +37,26 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun GreetingList(names : List<String>) {
+fun MainScreen() {
+    val list = remember {  mutableStateListOf("Adish", "Alfi")}
+
     Column(modifier = Modifier
         .padding(vertical = 4.dp)
         .fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceEvenly
     ) {
-        val list = remember {  mutableStateListOf("Adish", "Alfi")}
-        for (name in list) {
-            Greeting(name)
-        }
-        Button({list.add("Daddy")}) {
-            Text(text = "Add new name")
-        }
+        GreetingList(list) { list.add("New name") }
+    }
+}
+
+@Composable
+fun GreetingList(namesList : List<String>, onButtonClick : () -> Unit) {
+    for (name in namesList) {
+        Greeting(name)
+    }
+    Button(onClick = onButtonClick) {
+        Text(text = "Add new name")
     }
 }
 
@@ -66,6 +72,6 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Composable
 fun GreetingPreview() {
     DynamicContentExampleTheme {
-        GreetingList(namesList)
+        MainScreen()
     }
 }
