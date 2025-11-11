@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
@@ -39,7 +40,9 @@ class MainActivity : ComponentActivity() {
 fun MainScreen() {
     Surface(color = Color.Cyan,
         modifier = Modifier.fillMaxSize()) {
-            Row {
+            Row(modifier = Modifier.fillMaxHeight(),
+                horizontalArrangement = Arrangement.SpaceEvenly,
+                verticalAlignment = Alignment.CenterVertically) {
                 HorizontalColoredBar(Color.Red)
                 HorizontalColoredBar(Color.Black)
                 HorizontalColoredBar(Color.Blue)
