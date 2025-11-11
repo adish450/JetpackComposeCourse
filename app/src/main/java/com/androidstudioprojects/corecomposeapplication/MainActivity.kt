@@ -5,9 +5,11 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentSize
@@ -40,11 +42,13 @@ class MainActivity : ComponentActivity() {
 fun MainScreen() {
     Surface(color = Color.Cyan,
         modifier = Modifier.fillMaxSize()) {
-            Row(modifier = Modifier.fillMaxHeight(),
-                horizontalArrangement = Arrangement.SpaceEvenly,
-                verticalAlignment = Alignment.CenterVertically) {
-                HorizontalColoredBar(Color.Red)
-                HorizontalColoredBar(Color.Black)
+            Column(modifier = Modifier.fillMaxHeight(),
+                verticalArrangement = Arrangement.SpaceBetween,
+                horizontalAlignment = Alignment.CenterHorizontally) {
+                Row(modifier = Modifier.fillMaxWidth()) {
+                    HorizontalColoredBar(Color.Red)
+                    HorizontalColoredBar(Color.Black)
+                }
                 HorizontalColoredBar(Color.Blue)
                 HorizontalColoredBar(Color.Magenta)
                 HorizontalColoredBar(Color.Green)
@@ -56,7 +60,7 @@ fun MainScreen() {
 @Composable
 fun HorizontalColoredBar (color: Color) {
     Surface(color = color,
-        modifier = Modifier.size(60.dp, 600.dp)) { }
+        modifier = Modifier.size(600.dp, 100.dp)) { }
 }
 
 @Preview(showBackground = true)
