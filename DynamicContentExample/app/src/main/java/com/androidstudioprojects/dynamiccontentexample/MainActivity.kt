@@ -13,6 +13,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -39,8 +40,9 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun MainScreen() {
-    val list = remember {  mutableStateListOf("Adish", "Alfi")}
+fun MainScreen(viewModel: MainActivityViewModel = MainActivityViewModel()) {
+
+    val initialValue = viewModel.text.observeAsState("")
 
     Column(modifier = Modifier
         .padding(vertical = 4.dp)
@@ -48,22 +50,19 @@ fun MainScreen() {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceEvenly
     ) {
-        GreetingList(list) { list.add("New name") }
+        GreetingList(
+            initialValue.value
+        ) { newValue -> viewModel.onTextChanged(newVal = newValue) }
     }
 }
 
 @Composable
-fun GreetingList(namesList : List<String>, onButtonClick : () -> Unit) {
-    for (name in namesList) {
-        Greeting(name)
-    }
+fun GreetingList(initialValue: String, onTextFieldChange: (String) -> Unit) {
 
-    val initialValue = remember { mutableStateOf("") }
+    TextField(initialValue, onValueChange = onTextFieldChange)
 
-    TextField(initialValue.value, onValueChange = {newValue -> initialValue.value = newValue})
-
-    Button(onClick = onButtonClick) {
-        Text(text = "Add new name")
+    Button(onClick = {}) {
+        Text(text = initialValue)
     }
 }
 
