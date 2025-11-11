@@ -4,13 +4,17 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
@@ -35,10 +39,21 @@ class MainActivity : ComponentActivity() {
 fun MainScreen() {
     Surface(color = Color.Cyan,
         modifier = Modifier.fillMaxSize()) {
-        Surface(color = Color.Red, modifier = Modifier.wrapContentSize()) {
-            Text(text = "Hello World",
-                modifier = Modifier.padding(16.dp)) }
+            Row {
+                HorizontalColoredBar(Color.Red)
+                HorizontalColoredBar(Color.Black)
+                HorizontalColoredBar(Color.Blue)
+                HorizontalColoredBar(Color.Magenta)
+                HorizontalColoredBar(Color.Green)
+                HorizontalColoredBar(Color.Yellow)
+            }
     }
+}
+
+@Composable
+fun HorizontalColoredBar (color: Color) {
+    Surface(color = color,
+        modifier = Modifier.size(60.dp, 600.dp)) { }
 }
 
 @Preview(showBackground = true)
